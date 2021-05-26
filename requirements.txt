@@ -12,6 +12,5 @@ MarkupSafe==2.0.1
 Werkzeug==2.0.1
 aniso8601==8.1.0
 itsdangerous==2.0.1
-pymongo==2.7.1
 pytz==2019.3
 six==1.14.0
