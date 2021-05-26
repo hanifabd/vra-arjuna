@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B21-CAP0149 - Arjuna - Simple Simulation</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/img/favicon.png') }}">
+
+    <!-- <link rel="shortcut icon" href="../static/assets/img/favicon.png"> -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/img/favicon.png') }}">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i%7CMaitree:200,300,400,600,700&amp;subset=latin-ext" rel="stylesheet">
+
+    <!-- CSS Bootstrap -->    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <!-- CSS Base -->
+    <!-- <link rel="stylesheet" type='text/css' media='all' href="../static/assets/css/webslides.css"> -->
+    <link rel="stylesheet" type='text/css' media='all' href="{{ url_for('static', filename='assets/css/webslides.css') }}">
+
+    <!-- Optional - CSS SVG Icons (Font Awesome) -->
+    <!-- <link rel="stylesheet" type='text/css' media='all' href="../static/assets/css/svg-icons.css"> -->
+    <link rel="stylesheet" type='text/css' media='all' href="{{ url_for('static', filename='assets/css/svg-icons.css') }}">
+
+    <!-- Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#333333">
+</head>
+<body style="background-color: #ffffff;">
+    <main>
+        <section id='home'>
+            <center>
+                <div class="navbar-brand ml-4 pointer">
+                    <img class="favicon-hero" src="{{ url_for('static', filename='assets/img/logo.png') }}" alt="favicon"><br>
+                    <span class="ml-4 pointer" onclick="window.location='#home'"><b>Home</b></span>
+                    <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+                    <span class="ml-4 pointer" onclick="window.location='#report'"><b>Make a Report</b></span>
+                    <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+                    <span class="ml-4 pointer" onclick="window.location='#data'"><b>See Data</b></span>
+                </div>
+            </center>
+        </section>
+        <!-- Hero -->
+        <section id='report'>
+            <!--.wrap = container (width: 90%) -->
+            <div class="wrap margin-mobile">
+                <div class="grid vertical-align">
+                    <div class="wrap">
+                        <center><h1>Abuse Report by Community</h1></center><br>
+                        <center>
+                            <span class="ml-4 pointer" onclick="window.location='#home'"><b>Home</b></span>
+                            <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+                            <span class="ml-4 pointer" onclick="window.location='#report'"><b>Make a Report</b></span>
+                            <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+                            <span class="ml-4 pointer" onclick="window.location='#data'"><b>See Data</b></span>
+                        </center>
+                        <br><br>
+                        <ul class="flexblock">
+                            <li class="bg-light">
+                                <center><h2>Abuse Report</h2><br></center>
+                                <form action="{{ url_for('vra') }}" method="POST">
+                                    <div class="input-group input-group-lg mb-3">
+                                        <span class="input-group-text" id="inputGroup-sizing-lg">ID Number (NIK)</span>
+                                        <input name='nik' style="box-shadow: none;" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Fill your Nomor Induk Kependudukan here" aria-label="NIK">
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">Relation</span>
+                                        <select name='relation' class="form-select form-select-lg" aria-label=".form-select-lg example">
+                                            <option selected disabled>What is the relation between Victim and Agressor?</option>
+                                            <option value="Family">Family</option>
+                                            <option value="Stranger">Stranger</option>
+                                            <option value="Acquaintance">Acquaintance</option>
+                                        </select><br>
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">Abuse Type</span>
+                                        <select name='abuse_type' class="form-select form-select-lg" aria-label=".form-select-lg example">
+                                            <option selected disabled>What abuse frequently got by the Victim?</option>
+                                            <option value="Physical Abuse">Physical Abuse</option>
+                                            <option value="Psycological Abuse">Psycological Abuse</option>
+                                            <option value="Emotional Abuse">Emotional Abuse</option>
+                                            <option value="Sexual Abuse">Sexual Abuse</option>
+                                        </select><br>
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">Victim Age</span>
+                                        <select name='victim_age' class="form-select form-select-lg" aria-label=".form-select-lg example">
+                                            <option selected disabled>How old is the Victim?</option>
+                                            <option value="<16 years">&lt16 years</option>
+                                            <option value="16-17 years">16-17 years</option>
+                                            <option value="18-20 years">18-20 years</option>
+                                            <option value="21-30 years">21-30 years</option>
+                                            <option value="31-40 years">31-40 years</option>
+                                            <option value="41-50 years">41-50 years</option>
+                                            <option value="51-64 years">51-64 years</option>
+                                            <option value="65-74 years">65-74 years</option>
+                                            <option value="75-84 years">75-84 years</option>
+                                            <option value=">85 years">&gt85 years</option>
+                                            <option value="Unknown">Unknown</option>
+                                        </select><br>
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">Agressor Age</span>
+                                        <select name='agressor_age' class="form-select form-select-lg" aria-label=".form-select-lg example">
+                                            <option selected disabled>How old is the Agressor?</option>
+                                            <option value="<16 years">&lt16 years</option>
+                                            <option value="16-17 years">16-17 years</option>
+                                            <option value="18-20 years">18-20 years</option>
+                                            <option value="21-30 years">21-30 years</option>
+                                            <option value="31-40 years">31-40 years</option>
+                                            <option value="41-50 years">41-50 years</option>
+                                            <option value="51-64 years">51-64 years</option>
+                                            <option value="65-74 years">65-74 years</option>
+                                            <option value="75-84 years">75-84 years</option>
+                                            <option value=">85 years">&gt85 years</option>
+                                            <option value="Unknown">Unknown</option>
+                                        </select><br>
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">Previously Abused</span>
+                                        <select name='prev_abuse_report' class="form-select form-select-lg" aria-label=".form-select-lg example">
+                                            <option selected disabled>Does Victim ever got abused before?</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                            <option value="Unknown">Unknown</option>
+                                        </select><br>
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">Living Together</span>
+                                        <select name='living_together' class="form-select form-select-lg" aria-label=".form-select-lg example">
+                                            <option selected disabled>Does Victim live together with Agressor?</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                            <option value="Unknown">Unknown</option>
+                                        </select><br>
+                                    </div>
+
+                                   <div class="input-group input-group-lg mb-3">
+                                        <span class="input-group-text" id="inputGroup-sizing-lg">Short Chronology</span>
+                                        <input name='short_chronology' style="box-shadow: none;" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Tell us about the chronology shortly" aria-label="NIK">
+                                    </div>
+                                    <button class="bg-red" type="submit">Submit</button>
+                                </form>
+                            </li>
+                            <li class="bg-gray">
+                                <center><h2>Preview</h2></center>
+                                <table class='table table-sm table-borderless'>
+                                    {% if result %}
+                                    <tr style="border: none;">
+                                        <td style="border: none;">Date</td>
+                                        <td style="border: none;">:</td>
+                                        <td style="border: none;">{{ result[0] }}</td>
+                                    </tr>
+                                    <tr style="border: none;">
+                                        <td style="border: none;">NIK</td>
+                                        <td style="border: none;">:</td>
+                                        <td style="border: none;">{{ result[1] }}</td>
+                                    </tr>
+                                    <tr style="border: none;">
+                                        <td style="border: none;">Abuse Type</td>
+                                        <td style="border: none;">:</td>
+                                        <td style="border: none;">{{ result[2] }}</td>
+                                    </tr>
+                                    <tr style="border: none;">
+                                        <td style="border: none;">Relation</td>
+                                        <td style="border: none;">:</td>
+                                        <td style="border: none;">{{ result[3] }}</td>
+                                    </tr>
+                                    <tr style="border: none;">
+                                        <td style="border: none;">Victim Age</td>
+                                        <td style="border: none;">:</td>
+                                        <td style="border: none;">{{ result[4] }}</td>
+                                    </tr>
+                                    <tr style="border: none;">
+                                        <td style="border: none;">Agressor Age</td>
+                                        <td style="border: none;">:</td>
+                                        <td style="border: none;">{{ result[5] }}</td>
+                                    </tr>
+                                    <tr style="border: none;">
+                                        <td style="border: none;">Previous Abuse Report</td>
+                                        <td style="border: none;">:</td>
+                                        <td style="border: none;">{{ result[6] }}</td>
+                                    </tr>
+                                    <tr style="border: none;">
+                                        <td style="border: none;">Living Together</td>
+                                        <td style="border: none;">:</td>
+                                        <td style="border: none;">{{ result[7] }}</td>
+                                    </tr>
+                                    <tr style="border: none;">
+                                        <td style="border: none;">Short Chronology</td>
+                                        <td style="border: none;">:</td>
+                                        <td style="border: none;">{{ result[8] }}</td>
+                                    </tr>
+                                    <tr class="bg-red" style="border: none;">
+                                        <td style="border: none;">Risk Level</td>
+                                        <td style="border: none;">:</td>
+                                        <td style="border: none;">{{ result[9] }}</td>
+                                    </tr>
+                                    {% endif %}
+                                </table>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- .end .grid -->
+            </div>
+            <!-- .end .wrap -->
+        </section>
+        <section id='data'>
+            <!--.wrap = container (width: 90%) -->
+            <div class="wrap margin-mobile">
+                <div class="grid vertical-align">
+                    <div class="wrap">
+                        <center><h1>Report Gotten by KEMENPPA</h1></center><br>
+                        <center>
+                            <span class="ml-4 pointer" onclick="window.location='#home'"><b>Home</b></span>
+                            <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+                            <span class="ml-4 pointer" onclick="window.location='#report'"><b>Make a Report</b></span>
+                            <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+                            <span class="ml-4 pointer" onclick="window.location='#data'"><b>See Data</b></span>
+                        </center>
+                        <br><br>
+                        <table class="table table-striped table-sm table-responsive">
+                            <tr class="table-dark">
+                                <th>Date</th>
+                                <th>NIK</th>
+                                <th>Abuse</th>
+                                <th>Relation</th>
+                                <th>Victim</th>
+                                <th>Agressor</th>
+                                <th>PAR</th>
+                                <th>LT</th>
+                                <th>Chronology</th>
+                                <th>Risk Level</th>
+                            </tr>
+                            {% if reports %}
+                            {% for report in reports %}
+                            <tr>
+                                <td>{{ report['date_log'] }}</td>
+                                <td>{{ report['nik'] }}</td>
+                                <td>{{ report['violence_type'] }}</td>
+                                <td>{{ report['relation'] }}</td>
+                                <td>{{ report['victim_age'] }}</td>
+                                <td>{{ report['agressor_age'] }}</td>
+                                <td>{{ report['prev_abuse_report'] }}</td>
+                                <td>{{ report['living_together'] }}</td>
+                                <td>{{ report['short_chronology'] }}</td>
+                                <td><b>{{ report['risk_level'] }}</b></td>
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- .end .wrap -->
+        </section>
+    </main>
+    <footer class="w-100 p-2 bg-black">
+        <center><h6>B21-CAP0149 &#169; 2021</h6></center>
+    </footer>
+</body>
+</html>
+
+<!-- JS Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+<!-- JS Webslides -->
+<script src="{{ url_for('static', filename='assets/js/webslides.js') }}"></script>
+
+<!-- JS SVG Icons -->
+<script src="{{ url_for('static', filename='assets/js/svg-icons.js') }}"></script>
