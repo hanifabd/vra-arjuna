@@ -7,8 +7,9 @@ from flask_pymongo import PyMongo
 
 app = Flask(__name__, template_folder='site')
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+CORS(app)
 app.config["MONGO_URI"] = "mongodb+srv://arjuna-vra:<7gkQITLhZzNRnUir>@arjunavra.jngl9.mongodb.net/report_db?retryWrites=true&w=majority"
-mongodb_client = PyMongo(CORS(app))
+mongodb_client = PyMongo(app)
 db = mongodb_client.db
 
 # ==============================================================
